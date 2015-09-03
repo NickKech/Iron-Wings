@@ -14,6 +14,7 @@
 		9D5244071B977271001E5F72 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D5244051B977271001E5F72 /* Main.storyboard */; };
 		9D5244091B977272001E5F72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D5244081B977272001E5F72 /* Assets.xcassets */; };
 		9D52440C1B977272001E5F72 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D52440A1B977272001E5F72 /* LaunchScreen.storyboard */; };
+		9DF72EE61B98DB48005A643E /* LabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF72EE51B98DB48005A643E /* LabelNode.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		9D5244081B977272001E5F72 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D52440B1B977272001E5F72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D52440D1B977272001E5F72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9DF72EE51B98DB48005A643E /* LabelNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		9D5243FC1B977270001E5F72 /* IronWings-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				9DF72EE51B98DB48005A643E /* LabelNode.swift */,
 				9D5243FD1B977271001E5F72 /* AppDelegate.swift */,
 				9D5243FF1B977271001E5F72 /* GameScene.sks */,
 				9D5244011B977271001E5F72 /* GameScene.swift */,
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DF72EE61B98DB48005A643E /* LabelNode.swift in Sources */,
 				9D5244021B977271001E5F72 /* GameScene.swift in Sources */,
 				9D5244041B977271001E5F72 /* GameViewController.swift in Sources */,
 				9D5243FE1B977271001E5F72 /* AppDelegate.swift in Sources */,
@@ -293,6 +297,7 @@
 				9D5244121B977272001E5F72 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
