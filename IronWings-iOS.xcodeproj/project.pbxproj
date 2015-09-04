@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D16F3DA1B9A259D00255FB7 /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D16F3D91B9A259D00255FB7 /* Enumerations.swift */; settings = {ASSET_TAGS = (); }; };
+		9D16F3E11B9A2F1700255FB7 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 9D16F3DC1B9A2F1700255FB7 /* Credits.rtf */; settings = {ASSET_TAGS = (); }; };
+		9D16F3E21B9A2F1700255FB7 /* Fly.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9D16F3DD1B9A2F1700255FB7 /* Fly.m4a */; settings = {ASSET_TAGS = (); }; };
+		9D16F3E31B9A2F1700255FB7 /* GameOver.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9D16F3DE1B9A2F1700255FB7 /* GameOver.m4a */; settings = {ASSET_TAGS = (); }; };
+		9D16F3E41B9A2F1700255FB7 /* Message.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9D16F3DF1B9A2F1700255FB7 /* Message.m4a */; settings = {ASSET_TAGS = (); }; };
+		9D16F3E51B9A2F1700255FB7 /* Score.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9D16F3E01B9A2F1700255FB7 /* Score.m4a */; settings = {ASSET_TAGS = (); }; };
 		9D5243FE1B977271001E5F72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5243FD1B977271001E5F72 /* AppDelegate.swift */; };
-		9D5244001B977271001E5F72 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9D5243FF1B977271001E5F72 /* GameScene.sks */; };
 		9D5244021B977271001E5F72 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5244011B977271001E5F72 /* GameScene.swift */; };
 		9D5244041B977271001E5F72 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5244031B977271001E5F72 /* GameViewController.swift */; };
 		9D5244071B977271001E5F72 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D5244051B977271001E5F72 /* Main.storyboard */; };
@@ -18,9 +23,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9D16F3D91B9A259D00255FB7 /* Enumerations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enumerations.swift; sourceTree = "<group>"; };
+		9D16F3DC1B9A2F1700255FB7 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		9D16F3DD1B9A2F1700255FB7 /* Fly.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fly.m4a; sourceTree = "<group>"; };
+		9D16F3DE1B9A2F1700255FB7 /* GameOver.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = GameOver.m4a; sourceTree = "<group>"; };
+		9D16F3DF1B9A2F1700255FB7 /* Message.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Message.m4a; sourceTree = "<group>"; };
+		9D16F3E01B9A2F1700255FB7 /* Score.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Score.m4a; sourceTree = "<group>"; };
 		9D5243FA1B977270001E5F72 /* IronWings-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IronWings-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D5243FD1B977271001E5F72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9D5243FF1B977271001E5F72 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		9D5244011B977271001E5F72 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		9D5244031B977271001E5F72 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		9D5244061B977271001E5F72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -41,6 +51,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9D16F3DB1B9A2F1700255FB7 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				9D16F3DC1B9A2F1700255FB7 /* Credits.rtf */,
+				9D16F3DD1B9A2F1700255FB7 /* Fly.m4a */,
+				9D16F3DE1B9A2F1700255FB7 /* GameOver.m4a */,
+				9D16F3DF1B9A2F1700255FB7 /* Message.m4a */,
+				9D16F3E01B9A2F1700255FB7 /* Score.m4a */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		9D5243F11B97726E001E5F72 = {
 			isa = PBXGroup;
 			children = (
@@ -60,9 +82,10 @@
 		9D5243FC1B977270001E5F72 /* IronWings-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				9D16F3DB1B9A2F1700255FB7 /* Sounds */,
 				9DF72EE51B98DB48005A643E /* LabelNode.swift */,
+				9D16F3D91B9A259D00255FB7 /* Enumerations.swift */,
 				9D5243FD1B977271001E5F72 /* AppDelegate.swift */,
-				9D5243FF1B977271001E5F72 /* GameScene.sks */,
 				9D5244011B977271001E5F72 /* GameScene.swift */,
 				9D5244031B977271001E5F72 /* GameViewController.swift */,
 				9D5244051B977271001E5F72 /* Main.storyboard */,
@@ -130,10 +153,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D5244001B977271001E5F72 /* GameScene.sks in Resources */,
+				9D16F3E31B9A2F1700255FB7 /* GameOver.m4a in Resources */,
 				9D52440C1B977272001E5F72 /* LaunchScreen.storyboard in Resources */,
 				9D5244091B977272001E5F72 /* Assets.xcassets in Resources */,
 				9D5244071B977271001E5F72 /* Main.storyboard in Resources */,
+				9D16F3E21B9A2F1700255FB7 /* Fly.m4a in Resources */,
+				9D16F3E51B9A2F1700255FB7 /* Score.m4a in Resources */,
+				9D16F3E41B9A2F1700255FB7 /* Message.m4a in Resources */,
+				9D16F3E11B9A2F1700255FB7 /* Credits.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +174,7 @@
 				9DF72EE61B98DB48005A643E /* LabelNode.swift in Sources */,
 				9D5244021B977271001E5F72 /* GameScene.swift in Sources */,
 				9D5244041B977271001E5F72 /* GameViewController.swift in Sources */,
+				9D16F3DA1B9A259D00255FB7 /* Enumerations.swift in Sources */,
 				9D5243FE1B977271001E5F72 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

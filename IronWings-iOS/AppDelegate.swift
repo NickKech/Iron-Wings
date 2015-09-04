@@ -1,6 +1,5 @@
 //
 //  AppDelegate.swift
-//  IronWings-iOS
 //
 //  Created by Nikolaos Kechagias on 02/09/15.
 //  Copyright © 2015 Your Name. All rights reserved.
