@@ -421,6 +421,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         })
     }
     
+    func startNewGame() {
+        /* 1 Creates a new GameScene*/
+        let scene = GameScene(size: size)
+        
+        /* 2 Replace the old scene with new*/
+        self.scene?.view?.presentScene(scene)
+    }
+
+    
+    
     func showMessage(imageNamed: String) {
         /* 1 */
         let panel = SKSpriteNode(imageNamed: imageNamed)
@@ -519,11 +529,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         /* 2 */
         if gameState == .GameOver {
-            let gameOverMessage = childNodeWithName("GameOver") as! SKSpriteNode
-            gameOverMessage.removeFromParent()
-            bird.position = CGPoint(x: size.width * 0.25, y: size.height * 0.50)
-            showMessage("StartGame")
-            gameState = .Ready
+           startNewGame()
         }
         
         /* 3 */
