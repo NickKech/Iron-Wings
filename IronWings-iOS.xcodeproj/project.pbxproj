@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9D16F3DA1B9A259D00255FB7 /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D16F3D91B9A259D00255FB7 /* Enumerations.swift */; settings = {ASSET_TAGS = (); }; };
-		9D16F3E11B9A2F1700255FB7 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 9D16F3DC1B9A2F1700255FB7 /* Credits.rtf */; settings = {ASSET_TAGS = (); }; };
-		9D16F3E21B9A2F1700255FB7 /* Fly.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9D16F3DD1B9A2F1700255FB7 /* Fly.m4a */; settings = {ASSET_TAGS = (); }; };
-		9D16F3E31B9A2F1700255FB7 /* GameOver.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9D16F3DE1B9A2F1700255FB7 /* GameOver.m4a */; settings = {ASSET_TAGS = (); }; };
-		9D16F3E41B9A2F1700255FB7 /* Message.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9D16F3DF1B9A2F1700255FB7 /* Message.m4a */; settings = {ASSET_TAGS = (); }; };
-		9D16F3E51B9A2F1700255FB7 /* Score.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9D16F3E01B9A2F1700255FB7 /* Score.m4a */; settings = {ASSET_TAGS = (); }; };
+		9D16F3DA1B9A259D00255FB7 /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D16F3D91B9A259D00255FB7 /* Enumerations.swift */; };
+		9D16F3E11B9A2F1700255FB7 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 9D16F3DC1B9A2F1700255FB7 /* Credits.rtf */; };
+		9D16F3E21B9A2F1700255FB7 /* Fly.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9D16F3DD1B9A2F1700255FB7 /* Fly.m4a */; };
+		9D16F3E31B9A2F1700255FB7 /* GameOver.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9D16F3DE1B9A2F1700255FB7 /* GameOver.m4a */; };
+		9D16F3E41B9A2F1700255FB7 /* Message.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9D16F3DF1B9A2F1700255FB7 /* Message.m4a */; };
+		9D16F3E51B9A2F1700255FB7 /* Score.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9D16F3E01B9A2F1700255FB7 /* Score.m4a */; };
 		9D5243FE1B977271001E5F72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5243FD1B977271001E5F72 /* AppDelegate.swift */; };
 		9D5244021B977271001E5F72 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5244011B977271001E5F72 /* GameScene.swift */; };
 		9D5244041B977271001E5F72 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5244031B977271001E5F72 /* GameViewController.swift */; };
 		9D5244071B977271001E5F72 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D5244051B977271001E5F72 /* Main.storyboard */; };
 		9D5244091B977272001E5F72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D5244081B977272001E5F72 /* Assets.xcassets */; };
 		9D52440C1B977272001E5F72 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D52440A1B977272001E5F72 /* LaunchScreen.storyboard */; };
-		9DF72EE61B98DB48005A643E /* LabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF72EE51B98DB48005A643E /* LabelNode.swift */; settings = {ASSET_TAGS = (); }; };
+		9DF72EE61B98DB48005A643E /* LabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF72EE51B98DB48005A643E /* LabelNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
