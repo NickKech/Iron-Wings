@@ -31,7 +31,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var bird = SKSpriteNode() // Image of the bird
     
-    var gameState: GameState = .Ready
+    var gameState: GameState = .ready
     
     /* 1 */
     var scoreLabel = LabelNode(fontNamed: "Gill Sans Bold Italic") // Displays the score
@@ -58,7 +58,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     /* 3 */
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         /* Init Physics World */
         initPhysicsWorld()
         
@@ -80,12 +80,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // MARK: - Helpful Functions
     /* 1 */
-    func degreesRadians(value: CGFloat) -> CGFloat {
+    func degreesRadians(_ value: CGFloat) -> CGFloat {
         return CGFloat(M_PI) * value / 180.0
     }
     
     /* 2 */
-    func clamp(min: CGFloat, max: CGFloat, value: CGFloat) -> CGFloat {
+    func clamp(_ min: CGFloat, max: CGFloat, value: CGFloat) -> CGFloat {
         if value > max {
             return max
         } else if value < min {
@@ -96,7 +96,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     /* 3 */
-    func random(min: UInt32, max: UInt32) -> Int {
+    func random(_ min: UInt32, max: UInt32) -> Int {
         return Int(arc4random_uniform(max - min) + min)
     }
     
@@ -109,9 +109,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for index in 0 ... 1 {
             let background = SKSpriteNode(imageNamed: "Background")
             background.name = "Background"
-            background.anchorPoint = CGPointZero
+            background.anchorPoint = CGPoint.zero
             background.position = CGPoint(x: CGFloat(index) * background.size.width, y: 0)
-            background.zPosition = zOrderValue.Background.rawValue
+            background.zPosition = zOrderValue.background.rawValue
             backgroundLayer.addChild(background)
         }
     }
@@ -122,9 +122,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         backgroundLayer.position = CGPoint(x: backgroundLayer.position.x + CGFloat(stepX), y: 0)
         
         /* 2 */
-        backgroundLayer.enumerateChildNodesWithName("Background") { (child, index) in
+        backgroundLayer.enumerateChildNodes(withName: "Background") { (child, index) in
             /* 3 */
-            let backgroundPosition = self.backgroundLayer.convertPoint(child.position, toNode: self)
+            let backgroundPosition = self.backgroundLayer.convert(child.position, to: self)
             /* 4 */
             if backgroundPosition.x <= -child.frame.size.width {
                 child.position = CGPoint(x: child.position.x + child.frame.size.width * 2, y: child.position.y)
@@ -143,17 +143,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             /* 4 */
             let top = SKSpriteNode(imageNamed: "ForegroundTop")
             top.name = "Foreground"
-            top.anchorPoint = CGPointZero
+            top.anchorPoint = CGPoint.zero
             top.position = CGPoint(x: CGFloat(index) * top.size.width, y: size.height - top.size.height)
-            top.zPosition = zOrderValue.Foreground.rawValue
+            top.zPosition = zOrderValue.foreground.rawValue
             foregroundLayer.addChild(top)
             
             /* 5 */
-            top.physicsBody = SKPhysicsBody(rectangleOfSize: top.size, center: CGPoint(x: top.size.width * 0.50, y: top.size.height * 0.50 + 20))
-            top.physicsBody?.dynamic = false
+            top.physicsBody = SKPhysicsBody(rectangleOf: top.size, center: CGPoint(x: top.size.width * 0.50, y: top.size.height * 0.50 + 20))
+            top.physicsBody?.isDynamic = false
             
             /* 6 */
-            top.physicsBody?.categoryBitMask = ColliderCategory.Wall.rawValue
+            top.physicsBody?.categoryBitMask = ColliderCategory.wall.rawValue
         }
         
         /** Bottom Wall */
@@ -162,17 +162,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             /* 4 */
             let bottom = SKSpriteNode(imageNamed: "ForegroundBottom")
             bottom.name = "Foreground"
-            bottom.anchorPoint = CGPointZero
+            bottom.anchorPoint = CGPoint.zero
             bottom.position = CGPoint(x: CGFloat(index) * bottom.size.width, y: 0)
-            bottom.zPosition = zOrderValue.Foreground.rawValue
+            bottom.zPosition = zOrderValue.foreground.rawValue
             foregroundLayer.addChild(bottom)
             
             /* 5 */
-            bottom.physicsBody = SKPhysicsBody(rectangleOfSize: bottom.size, center: CGPoint(x: bottom.size.width * 0.50, y: bottom.size.height * 0.50 - 20))
-            bottom.physicsBody?.dynamic = false
+            bottom.physicsBody = SKPhysicsBody(rectangleOf: bottom.size, center: CGPoint(x: bottom.size.width * 0.50, y: bottom.size.height * 0.50 - 20))
+            bottom.physicsBody?.isDynamic = false
             
             /* 6 */
-            bottom.physicsBody?.categoryBitMask = ColliderCategory.Wall.rawValue
+            bottom.physicsBody?.categoryBitMask = ColliderCategory.wall.rawValue
         }
     }
     
@@ -182,9 +182,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         /* 2 */
         foregroundLayer.position = CGPoint(x: foregroundLayer.position.x + CGFloat(stepX), y: 0)
         /* 3 */
-        foregroundLayer.enumerateChildNodesWithName("Foreground") { (child, index) in
+        foregroundLayer.enumerateChildNodes(withName: "Foreground") { (child, index) in
             /* 4 */
-            let foregroundPosition = self.foregroundLayer.convertPoint(child.position, toNode: self)
+            let foregroundPosition = self.foregroundLayer.convert(child.position, to: self)
             /* 5 */
             if foregroundPosition.x <= -child.frame.size.width {
                 child.position = CGPoint(x: child.position.x + child.frame.size.width * 2, y: child.position.y)
@@ -195,7 +195,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // MARK: - Init Physics World
     func initPhysicsWorld() {
         /* 1 */
-        physicsWorld.gravity = CGVectorMake(0, -5)
+        physicsWorld.gravity = CGVector(dx: 0, dy: -5)
         
         /* 2 */
         physicsWorld.contactDelegate = self
@@ -204,8 +204,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.speed = 0
     }
     
-    func didBeginContact(contact: SKPhysicsContact) {
-        if gameState != .Playing {
+    func didBegin(_ contact: SKPhysicsContact) {
+        if gameState != .playing {
             return
         }
         
@@ -214,15 +214,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let categoryB = contact.bodyB.categoryBitMask;
         
         /* 2 */
-        if categoryA == ColliderCategory.Bird.rawValue && categoryB == ColliderCategory.Wall.rawValue {
+        if categoryA == ColliderCategory.bird.rawValue && categoryB == ColliderCategory.wall.rawValue {
             gameOver()
-        } else if categoryB == ColliderCategory.Bird.rawValue && categoryA == ColliderCategory.Wall.rawValue {
+        } else if categoryB == ColliderCategory.bird.rawValue && categoryA == ColliderCategory.wall.rawValue {
             gameOver()
-        } else if categoryA == ColliderCategory.Bird.rawValue && categoryB == ColliderCategory.Coin.rawValue {
+        } else if categoryA == ColliderCategory.bird.rawValue && categoryB == ColliderCategory.coin.rawValue {
             contact.bodyB.node?.removeFromParent()
             /* Step 3: Update Score */
             updateScore()
-        } else if categoryB == ColliderCategory.Bird.rawValue && categoryA == ColliderCategory.Coin.rawValue {
+        } else if categoryB == ColliderCategory.bird.rawValue && categoryA == ColliderCategory.coin.rawValue {
             contact.bodyA.node?.removeFromParent()
             /* Step 3: Update Score */
             updateScore()
@@ -234,7 +234,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         /* 1 */
         bird = SKSpriteNode(imageNamed: "Bird-1")
         bird.name = "Bird"
-        bird.zPosition = zOrderValue.Bird.rawValue
+        bird.zPosition = zOrderValue.bird.rawValue
         bird.position = CGPoint(x: size.width * 0.25, y: size.height * 0.50)
         addChild(bird)
         
@@ -244,11 +244,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         bird.physicsBody?.allowsRotation = false
         
         /* 3 */
-        bird.physicsBody?.categoryBitMask = ColliderCategory.Bird.rawValue
+        bird.physicsBody?.categoryBitMask = ColliderCategory.bird.rawValue
         /* 4 */
-        bird.physicsBody?.collisionBitMask = ColliderCategory.Wall.rawValue
+        bird.physicsBody?.collisionBitMask = ColliderCategory.wall.rawValue
         /* 5 */
-        bird.physicsBody?.contactTestBitMask = ColliderCategory.Wall.rawValue | ColliderCategory.Coin.rawValue
+        bird.physicsBody?.contactTestBitMask = ColliderCategory.wall.rawValue | ColliderCategory.coin.rawValue
         
         /* 6 */
         let texture1 = SKTexture(imageNamed: "Bird-1")
@@ -257,13 +257,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let textures=[texture1, texture2, texture3, texture2]
         
         /* 7 */
-        bird.runAction(SKAction.repeatActionForever(SKAction.animateWithTextures(textures, timePerFrame: 0.25)))
+        bird.run(SKAction.repeatForever(SKAction.animate(with: textures, timePerFrame: 0.25)))
     }
     
     // MARK: - Set Columns
     func addPairOfColumns(){
         /* 1 */
-        let gapHeight = CGFloat(randomGapHeight())
+        let gapHeight = randomGapHeight()
         
         /* 2 */
         let height = size.height
@@ -275,7 +275,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let pairOfColumns = SKNode()
         pairOfColumns.name = "PairOfColumns"
         pairOfColumns.position = CGPoint(x: size.width * 1.25, y: positionY)
-        pairOfColumns.zPosition = zOrderValue.Wall.rawValue
+        pairOfColumns.zPosition = zOrderValue.wall.rawValue
         columnsLayer.addChild(pairOfColumns)
         
         /* 4 */
@@ -306,29 +306,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         /* 7 */
         let distance = CGFloat(size.width * 1.25 + 2.0 * topBlock.size.width)
-        let duration = NSTimeInterval(0.01 * distance)
-        let move = SKAction.moveByX(-distance, y: 0.0, duration: duration)
+        let duration = TimeInterval(0.01 * distance)
+        let move = SKAction.moveBy(x: -distance, y: 0.0, duration: duration)
         let remove = SKAction.removeFromParent()
         let sequence = SKAction.sequence([move, remove])
-        pairOfColumns.runAction(sequence)
+        pairOfColumns.run(sequence)
     }
     
-    func randomGapHeight() -> Float {
+    func randomGapHeight() -> CGFloat {
         let height = random(170, max: 200)
-        return Float(height)
+        return CGFloat(height)
     }
     
     func addCoin() -> SKSpriteNode {
         /* 1 */
         let coin = SKSpriteNode(imageNamed: "Coin-1")
-        coin.zPosition = zOrderValue.Coin.rawValue
+        coin.zPosition = zOrderValue.coin.rawValue
         
         /* 2 */
         coin.physicsBody = SKPhysicsBody(circleOfRadius: coin.size.height * 0.50)
-        coin.physicsBody?.dynamic = false
+        coin.physicsBody?.isDynamic = false
         
         /* 3*/
-        coin.physicsBody?.categoryBitMask = ColliderCategory.Coin.rawValue
+        coin.physicsBody?.categoryBitMask = ColliderCategory.coin.rawValue
         
         /* 4 */
         var textures = [SKTexture]()
@@ -338,7 +338,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         /* 5 */
-        coin.runAction(SKAction.repeatActionForever(SKAction.animateWithTextures(textures, timePerFrame: 0.25)))
+        coin.run(SKAction.repeatForever(SKAction.animate(with: textures, timePerFrame: 0.25)))
         
         return coin
     }
@@ -347,14 +347,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         /* 1 */
         let block = SKSpriteNode(imageNamed: "Block")
         block.name = "Block"
-        block.zPosition = zOrderValue.Block.rawValue
+        block.zPosition = zOrderValue.block.rawValue
         
         /* 2 */
-        block.physicsBody = SKPhysicsBody(rectangleOfSize: block.size)
-        block.physicsBody?.dynamic = false
+        block.physicsBody = SKPhysicsBody(rectangleOf: block.size)
+        block.physicsBody?.isDynamic = false
         
         /* 3 */
-        block.physicsBody?.categoryBitMask = ColliderCategory.Wall.rawValue
+        block.physicsBody?.categoryBitMask = ColliderCategory.wall.rawValue
         
         return block
     }
@@ -364,14 +364,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         /* 1 */
         let column = SKSpriteNode(imageNamed: "Column")
         column.name = "Column"
-        column.zPosition = zOrderValue.Wall.rawValue
+        column.zPosition = zOrderValue.wall.rawValue
         /* 2 */
-        column.physicsBody = SKPhysicsBody(rectangleOfSize: column.size)
-        column.physicsBody?.dynamic = false
+        column.physicsBody = SKPhysicsBody(rectangleOf: column.size)
+        column.physicsBody?.isDynamic = false
         
         /* 3 */
-        column.physicsBody?.categoryBitMask = ColliderCategory.Wall.rawValue
-        column.physicsBody?.contactTestBitMask = ColliderCategory.Bird.rawValue
+        column.physicsBody?.categoryBitMask = ColliderCategory.wall.rawValue
+        column.physicsBody?.contactTestBitMask = ColliderCategory.bird.rawValue
         
         return column
     }
@@ -381,14 +381,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(columnsLayer)
         
         /* 2 */
-        let spawn = SKAction.runBlock() {
+        let spawn = SKAction.run() {
             self.addPairOfColumns()
         }
         
-        let delay = SKAction.waitForDuration(4.0)
+        let delay = SKAction.wait(forDuration: 4.0)
         let sequence = SKAction.sequence([spawn, delay])
-        let forever = SKAction.repeatActionForever(sequence)
-        runAction(forever)
+        let forever = SKAction.repeatForever(sequence)
+        run(forever)
     }
     
     // MARK: - Game States
@@ -405,16 +405,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func gameOver() {
         /* 1 */
-        gameState = .GameOver
+        gameState = .gameOver
         showMessage("GameOver")
-        runAction(soundGameOver)
+        run(soundGameOver)
         
         /* Save Best Score */
         saveBestScore()
         
         /* 2 */
-        let rotate = SKAction.rotateToAngle(0, duration: 0)
-        bird.runAction(rotate, completion:{
+        let rotate = SKAction.rotate(toAngle: 0, duration: 0)
+        bird.run(rotate, completion:{
             self.physicsWorld.speed = 0
             self.removeAllActions()
             self.columnsLayer.removeFromParent()
@@ -431,17 +431,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     
     
-    func showMessage(imageNamed: String) {
+    func showMessage(_ imageNamed: String) {
         /* 1 */
         let panel = SKSpriteNode(imageNamed: imageNamed)
-        panel.zPosition = zOrderValue.Message.rawValue
+        panel.zPosition = zOrderValue.message.rawValue
         panel.position = CGPoint(x: size.width * 0.65, y: -size.height)
         panel.name = imageNamed
         addChild(panel)
         
         /* 2 */
-        let move = SKAction.moveTo(CGPoint(x: size.width * 0.65, y: size.height * 0.50), duration: 0.5)
-        panel.runAction(SKAction.sequence([soundMessage, move]))
+        let move = SKAction.move(to: CGPoint(x: size.width * 0.65, y: size.height * 0.50), duration: 0.5)
+        panel.run(SKAction.sequence([soundMessage, move]))
     }
     
     
@@ -449,14 +449,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func initHUD() {
         /* 1 */
         scoreLabel.fontSize = 48
-        scoreLabel.zPosition = zOrderValue.Hud.rawValue
+        scoreLabel.zPosition = zOrderValue.hud.rawValue
         scoreLabel.position = CGPoint(x: size.width * 0.25, y: size.height - 48)
         scoreLabel.text = "Score: \(score)"
         addChild(scoreLabel)
         
         /* 2 */
         bestScoreLabel.fontSize = 48
-        bestScoreLabel.zPosition = zOrderValue.Hud.rawValue
+        bestScoreLabel.zPosition = zOrderValue.hud.rawValue
         bestScoreLabel.position = CGPoint(x: size.width * 0.75, y: size.height - 48)
         bestScoreLabel.text = "Best: \(best)"
         addChild(bestScoreLabel)
@@ -471,24 +471,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // MARK: - Save/Load Best score
     func saveBestScore() {
         if score > loadBestScore() {
-            NSUserDefaults.standardUserDefaults().setInteger(best, forKey: "kBestScore")
-            NSUserDefaults.standardUserDefaults().synchronize()
+            UserDefaults.standard.set(score, forKey: "kBestScore")
+            UserDefaults.standard.synchronize()
         }
     }
     
     func loadBestScore() -> Int {
-        return NSUserDefaults.standardUserDefaults().integerForKey("kBestScore")
+        return UserDefaults.standard.integer(forKey: "kBestScore")
     }
     
     // MARK: - Score
     func updateScore() {
         /* 1 */
-        runAction(soundScore)
+        run(soundScore)
         score += 1
     }
     
     // MARK: - Update
-    override func update(currentTime: CFTimeInterval) {
+    override func update(_ currentTime: TimeInterval) {
         
         /* 1 */
         if lastUpdate == 0.0 {
@@ -507,7 +507,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let maxSpeedY: CGFloat = 320
         
         if curSpeedY > maxSpeedY {
-            bird.physicsBody?.velocity = CGVectorMake(CGFloat(curSpeedX), maxSpeedY)
+            bird.physicsBody?.velocity = CGVector(dx: CGFloat(curSpeedX), dy: maxSpeedY)
         }
         
         /* 2 */
@@ -518,24 +518,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     // MARK: - Touches
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         /* 1 */
-        if gameState == .Ready {
-            let startGameMessage = childNodeWithName("StartGame") as! SKSpriteNode
-            gameState = .Playing
+        if gameState == .ready {
+            let startGameMessage = childNode(withName: "StartGame") as! SKSpriteNode
+            gameState = .playing
             startGameMessage.removeFromParent()
             startGame()
         }
         
         /* 2 */
-        if gameState == .GameOver {
+        if gameState == .gameOver {
            startNewGame()
         }
         
         /* 3 */
-        if gameState == .Playing {
-            runAction(soundFly)
-            bird.physicsBody?.applyImpulse(CGVectorMake(0, 80))
+        if gameState == .playing {
+            run(soundFly)
+            bird.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 80))
         }
     }
    
