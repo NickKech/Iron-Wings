@@ -75,17 +75,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         initHUD()
         
         /* Show Start Game Message */
-        showMessage("StartGame")
+        showMessage(imageNamed: "StartGame")
     }
     
     // MARK: - Helpful Functions
     /* 1 */
-    func degreesRadians(_ value: CGFloat) -> CGFloat {
+    func degreesRadians(value: CGFloat) -> CGFloat {
         return CGFloat(M_PI) * value / 180.0
     }
     
     /* 2 */
-    func clamp(_ min: CGFloat, max: CGFloat, value: CGFloat) -> CGFloat {
+    func clamp(min: CGFloat, max: CGFloat, value: CGFloat) -> CGFloat {
         if value > max {
             return max
         } else if value < min {
@@ -96,7 +96,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     /* 3 */
-    func random(_ min: UInt32, max: UInt32) -> Int {
+    func random(min: UInt32, max: UInt32) -> Int {
         return Int(arc4random_uniform(max - min) + min)
     }
     
@@ -269,7 +269,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let height = size.height
         let min = wallHeight + gapHeight * 0.50
         let max = height - wallHeight - gapHeight * 0.50
-        let positionY = CGFloat(random(UInt32(min), max: UInt32(max)))
+        let positionY = CGFloat(random(min: UInt32(min), max: UInt32(max)))
         
         /* 3 */
         let pairOfColumns = SKNode()
@@ -314,7 +314,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func randomGapHeight() -> CGFloat {
-        let height = random(170, max: 200)
+        let height = random(min: 170, max: 200)
         return CGFloat(height)
     }
     
@@ -406,7 +406,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func gameOver() {
         /* 1 */
         gameState = .gameOver
-        showMessage("GameOver")
+        showMessage(imageNamed: "GameOver")
         run(soundGameOver)
         
         /* Save Best Score */
@@ -431,7 +431,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     
     
-    func showMessage(_ imageNamed: String) {
+    func showMessage(imageNamed: String) {
         /* 1 */
         let panel = SKSpriteNode(imageNamed: imageNamed)
         panel.zPosition = zOrderValue.message.rawValue
@@ -511,7 +511,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         /* 2 */
-        bird.zRotation = clamp(-1, max: 0.0, value: curSpeedY * (curSpeedY < 0 ? 0.003 : 0.001))
+        bird.zRotation = clamp(min: -1, max: 0.0, value: curSpeedY * (curSpeedY < 0 ? 0.003 : 0.001))
         
         /* 3 */
         bird.position.x = size.width * 0.25
